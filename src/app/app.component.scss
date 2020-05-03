@@ -1,5 +1,6 @@
 .app-wrapper {
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
 }
 
 .app-sidebar {
@@ -16,4 +17,5 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }

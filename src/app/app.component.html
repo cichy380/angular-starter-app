@@ -1,36 +1,105 @@
 <app-progress></app-progress>
 
-<mat-sidenav-container class="app-wrapper">
-  <mat-sidenav mode="side" #sidenav class="app-sidebar">
-    <aside>
-      <nav>
-        <ul>
-          <li>
-            <a [routerLink]="['link']" [routerLinkActive]="'active'">
-              Link
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['link']" [routerLinkActive]="'active'">
-              Link
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['link']" [routerLinkActive]="'active'">
-              Link
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-  </mat-sidenav>
-  <mat-sidenav-content class="app-content">
-    <app-header (sidenavIconClick)="sidenav.toggle()"></app-header>
+<!--<mat-sidenav-container class="app-wrapper">-->
+<!--  <mat-sidenav mode="side" #sidenav class="app-sidebar">-->
+<!--    <aside>-->
+<!--      <nav>-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <a [routerLink]="['link']" [routerLinkActive]="'active'">-->
+<!--              Link-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a [routerLink]="['link']" [routerLinkActive]="'active'">-->
+<!--              Link-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a [routerLink]="['link']" [routerLinkActive]="'active'">-->
+<!--              Link-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </nav>-->
+<!--    </aside>-->
+<!--  </mat-sidenav>-->
+<!--  <mat-sidenav-content class="app-content">-->
+<!--    <app-header (sidenavIconClick)="sidenav.toggle()"></app-header>-->
 
-    <main class="app-content__main">
-      <router-outlet></router-outlet>
+<!--    <main class="app-content__main">-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </main>-->
+
+<!--    <app-footer></app-footer>-->
+<!--  </mat-sidenav-content>-->
+<!--</mat-sidenav-container>-->
+
+<div class="app-wrapper">
+  <aside class="mdc-drawer">
+    <div class="mdc-drawer__header">
+      <h3 class="mdc-drawer__title">Mail</h3>
+      <h6 class="mdc-drawer__subtitle">email@material.io</h6>
+    </div>
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabindex="0">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+          <span class="mdc-list-item__text">Inbox</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
+          <span class="mdc-list-item__text">Star</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+          <span class="mdc-list-item__text">Sent Mail</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+          <span class="mdc-list-item__text">Drafts</span>
+        </a>
+
+        <hr class="mdc-list-divider">
+        <h6 class="mdc-list-group__subheader">Labels</h6>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+          <span class="mdc-list-item__text">Family</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+          <span class="mdc-list-item__text">Friends</span>
+        </a>
+        <a class="mdc-list-item" href="#">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+          <span class="mdc-list-item__text">Work</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-scrim"></div>
+
+  <div class="mdc-drawer-app-content app-content">
+<!--    <app-header (sidenavIconClick)="drawer.open=!drawer.open"></app-header>-->
+    <header class="mdc-top-app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
+          <span class="mdc-top-app-bar__title">App Bar</span>
+        </section>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+          <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Search" alt="Search">search</a>
+        </section>
+      </div>
+    </header>
+
+    <main class="main-content app-content__main">
+      <div class="mdc-top-app-bar--fixed-adjust">
+        <router-outlet></router-outlet>
+      </div>
     </main>
 
     <app-footer></app-footer>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</div>

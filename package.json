@@ -30,6 +30,8 @@
     "@angular/platform-browser": "~9.0.5",
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
+    "@material/drawer": "^6.0.0",
+    "@material/top-app-bar": "^6.0.0",
     "@ngrx/effects": "^9.0.0",
     "@ngrx/entity": "^9.0.0",
     "@ngrx/store": "^9.0.0",
