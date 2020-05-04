@@ -44,6 +44,8 @@ export class AppComponent implements AfterViewInit {
       const drawer = MDCDrawer.attachTo(drawerElement)
       drawer.open = false
 
+      // drawer.listen('MDCDrawer:closed', () => console.log('MDCDrawer:closed'))
+
       listEl.addEventListener('click', (event) => {
         drawer.open = false
       })
@@ -65,19 +67,45 @@ export class AppComponent implements AfterViewInit {
 
     const resizeHandler = () => {
       if (window.matchMedia('(max-width: 900px)').matches && this.drawer instanceof MDCList) {
+        console.log('small')
         this.drawer.destroy()
-        this.drawer = initModalDrawer()
-      } else if (window.matchMedia('(min-width: 900px)').matches && this.drawer instanceof MDCDrawer) {
-        this.drawer.destroy()
-        this.drawer = initPermanentDrawer()
+        this.drawer = initModalDrawer() // return MDCDrawer
+      } else if (window.matchMedia('(min-width: 901px)').matches && this.drawer instanceof MDCDrawer) {
+        console.log('big')
+        if (this.drawer.open) {
+          console.log('this.drawer.listen...')
+          this.drawer.listen('MDCDrawer:closed', drawerClosedHandler)
+          this.drawer.open = false
+        } else {
+          this.drawer.destroy()
+          this.drawer = initPermanentDrawer() // return MDCList
+        }
+        // setTimeout(() => {
+        //   this.drawer.destroy()
+        //   this.drawer = initPermanentDrawer() // return MDCList
+        // }, 1000)
+
       }
     }
     window.addEventListener('resize', resizeHandler)
+
+    const drawerClosedHandler = () => {
+      console.log('MDCDrawer:closed')
+      if (window.matchMedia('(min-width: 901px)').matches) {
+        console.log('this.drawer.destroy()')
+        this.drawer.unlisten('MDCDrawer:closed', drawerClosedHandler)
+        this.drawer.destroy()
+        this.drawer = initPermanentDrawer() // return MDCList
+      }
+    }
   }
 
   public openDrawer() {
     if (this.drawer instanceof MDCDrawer) {
       (this.drawer as MDCDrawer).open = true
+      // const fun = () => console.log('MDCDrawer:closed');
+      // (this.drawer as MDCDrawer).unlisten('MDCDrawer:closed', fun);
+      // (this.drawer as MDCDrawer).listen('MDCDrawer:closed', fun)
     }
   }
 }
