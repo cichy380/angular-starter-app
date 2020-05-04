@@ -1,18 +1,22 @@
-<mat-toolbar class="app-toolbar" color="primary">
-  <button mat-icon-button aria-label="Toggle app menu" class="app-toolbar__btn-menu" (click)="sidenavIconClick.emit()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <img src="assets/logo-white.svg" class="app-toolbar__logo" alt=""> Angular Starter App
-
-  <div class="app-toolbar__right">
-    <button mat-icon-button aria-label="Toggle user menu" [matMenuTriggerFor]="menu">
-      <mat-icon>person</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Your profile</button>
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Sign out</button>
-    </mat-menu>
+<header class="mdc-top-app-bar app-top-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <button mat-icon-button aria-label="Open app menu" class="app-top-bar__nav-btn" (click)="navBtnClick.emit()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="mdc-top-app-bar__title app-top-bar__title">
+        <img src="assets/logo-white.svg" class="app-top-bar__logo" alt=""> Angular Starter App
+      </span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <button mat-icon-button aria-label="Toggle user menu" [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Your profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Sign out</button>
+      </mat-menu>
+    </section>
   </div>
-</mat-toolbar>
+</header>

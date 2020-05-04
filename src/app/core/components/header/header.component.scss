@@ -1,16 +1,27 @@
-.app-toolbar {
-  font-weight: normal;
+.app-top-bar {
+  position: absolute;
 }
 
-.app-toolbar__btn-menu {
-  margin-right: 12px;
+.app-top-bar__title {
+  display: flex;
+  align-items: center;
 }
 
-.app-toolbar__logo {
+.app-top-bar__logo {
   width: 28px;
   height: 28px;
 }
 
-.app-toolbar__right {
-  margin-left: auto;
+// BREAKPOINT min-width:900px
+
+.app-top-bar__nav-btn {
+  display: none;
+}
+
+// BREAKPOINT max-width:900px
+
+@media (max-width: 900px) {
+  .app-top-bar__nav-btn {
+    display: block;
+  }
 }

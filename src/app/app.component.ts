@@ -5,6 +5,7 @@ import { checkIsOnline } from './shared/store/shared.actions'
 import { MDCList } from '@material/list'
 import { MDCDrawer } from '@material/drawer/component'
 import { MDCTopAppBar } from '@material/top-app-bar/component'
+import { takeUntil } from 'rxjs/operators'
 
 
 @Component({
@@ -13,7 +14,7 @@ import { MDCTopAppBar } from '@material/top-app-bar/component'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
-  // public drawer: MDCDrawer
+  private drawer: MDCDrawer | MDCList
 
   constructor(private store: Store<SharedState>) {
     this.store.dispatch(checkIsOnline())
@@ -35,16 +36,13 @@ export class AppComponent implements AfterViewInit {
 
 // Initialize either modal or permanent drawer
 
+    const topAppBar = MDCTopAppBar.attachTo(topAppBarElement)
+    topAppBar.setScrollTarget(mainContentEl)
+
     const initModalDrawer = () => {
       drawerElement.classList.add('mdc-drawer--modal')
       const drawer = MDCDrawer.attachTo(drawerElement)
       drawer.open = false
-
-      const topAppBar = MDCTopAppBar.attachTo(topAppBarElement)
-      topAppBar.setScrollTarget(mainContentEl)
-      topAppBar.listen('MDCTopAppBar:nav', () => {
-        drawer.open = !drawer.open
-      })
 
       listEl.addEventListener('click', (event) => {
         drawer.open = false
@@ -60,21 +58,26 @@ export class AppComponent implements AfterViewInit {
       return list
     }
 
-    let drawer = window.matchMedia('(max-width: 900px)').matches ?
+    this.drawer = window.matchMedia('(max-width: 900px)').matches ?
       initModalDrawer() : initPermanentDrawer()
 
 // Toggle between permanent drawer and modal drawer at breakpoint 900px
 
     const resizeHandler = () => {
-      if (window.matchMedia('(max-width: 900px)').matches && drawer instanceof MDCList) {
-        drawer.destroy()
-        drawer = initModalDrawer()
-      } else if (window.matchMedia('(min-width: 900px)').matches && drawer instanceof MDCDrawer) {
-        drawer.destroy()
-        drawer = initPermanentDrawer()
+      if (window.matchMedia('(max-width: 900px)').matches && this.drawer instanceof MDCList) {
+        this.drawer.destroy()
+        this.drawer = initModalDrawer()
+      } else if (window.matchMedia('(min-width: 900px)').matches && this.drawer instanceof MDCDrawer) {
+        this.drawer.destroy()
+        this.drawer = initPermanentDrawer()
       }
     }
     window.addEventListener('resize', resizeHandler)
+  }
 
+  public openDrawer() {
+    if (this.drawer instanceof MDCDrawer) {
+      (this.drawer as MDCDrawer).open = true
+    }
   }
 }

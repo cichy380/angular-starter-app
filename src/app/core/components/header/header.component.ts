@@ -7,5 +7,5 @@ import { Component, EventEmitter, Output } from '@angular/core'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() sidenavIconClick = new EventEmitter()
+  @Output() navBtnClick = new EventEmitter()
 }
