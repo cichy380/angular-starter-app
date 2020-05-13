@@ -34,7 +34,14 @@ $gutter: 30px;
 // page header
 
 .page-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
   background-color: $page-header-bg;
+
+  @media (max-width: 599px) {
+    padding: 8px 6px;
+  }
 }
 
 .page-header__addons {
