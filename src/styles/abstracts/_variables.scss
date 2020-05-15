@@ -1,0 +1,92 @@
+// Config
+// application-wide Sass variables
+
+
+// Color system
+
+@import "~@angular/material/theming";
+
+// Material Design palettes https://material.io/design/color/
+$app-primary: mat-palette($mat-blue);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
+$app-warn: mat-palette($mat-red);
+
+$color-primary: map-get($app-primary, 500);
+$color-success: map-get(mat-palette($mat-green), 500);
+$color-danger: map-get($app-warn, 500);
+
+
+// Body
+
+$body-bg: map-get($mat-gray, 50);
+$body-color: rgba(#000, .87);
+
+
+// Links
+
+$link-color: map-get($app-primary, 500);
+$link-decoration: underline;
+$link-hover-color: map-get($app-primary, 700);
+$link-hover-decoration: underline;
+
+
+// Grid
+
+$gutters: 30px;
+
+
+// Typography
+
+$font-family-base: 'Roboto, "Helvetica Neue", sans-serif';
+
+$font-size-base: 14px;
+$font-size-lg: 18px;
+$font-size-sm: 12px;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-bolder: 600;
+
+$line-height-base: 20px;
+$line-height-large: 24px;
+
+$h1-font-size: 24px;
+$h1-font-weight: 400;
+$h1-line-height: 32px;
+$h2-font-size: 20px;
+$h2-font-weight: 600;
+$h2-line-height: 32px;
+$h3-font-size: 16px;
+$h3-font-weight: 400;
+$h3-line-height: 28px;
+$h4-font-size: 15px;
+$h4-font-weight: 400;
+$h4-line-height: 24px;
+
+$display1-font-size: 34px;
+$display1-font-weight: 400;
+$display1-line-height: 40px;
+
+$display2-font-size: 45px;
+$display2-font-weight: 400;
+$display2-line-height: 48px;
+
+
+// Layout
+
+$page-header-bg: map-get($app-primary, 50);
+
+
+// Buttons + Forms
+
+$input-line-height: 1.125;
+$button-font-weight: 500;
+
+
+// Components
+
+// ng-progress
+$progress-bar-height: 3px;
+$progress-bar-color: map-get(mat-palette($mat-red), 600);
+

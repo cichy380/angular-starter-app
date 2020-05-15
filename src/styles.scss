@@ -1,10 +1,21 @@
-@import "./styles/variables";
-@import "./styles/base";
-@import "./styles/vendor/material-icons";
-@import "./styles/layout";
-@import "./styles/helper";
-@import "./styles/theme";
-@import "./styles/snackbar";
-@import "./styles/progressbar";
+// Abstracts
+@import "./styles/abstracts/functions";
+@import "./styles/abstracts/variables";
 
-/* You can add global styles to this file, and also import other style files */
+// Vendors
+@import "./styles/vendor/angular-material";
+@import "./styles/vendor/material-icons";
+@import "./styles/vendor/progressbar";
+
+// Base
+@import "./styles/base/reboot";
+@import "./styles/base/base";
+@import "./styles/base/helpers";
+@import "./styles/base/typography";
+
+// Layout
+@import "./styles/layout/grid";
+@import "./styles/layout/page";
+
+// Components
+@import "./styles/components/snackbar";

@@ -26,3 +26,9 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 // theme styles for core
 @include angular-material-theme($app-theme);
+
+
+.mat-drawer-container {
+  background-color: $body-bg;
+  color: $body-color;
+}
