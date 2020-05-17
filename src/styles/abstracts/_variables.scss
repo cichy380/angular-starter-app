@@ -1,7 +1,6 @@
 // Config
 // application-wide Sass variables
 
-
 // Color system
 
 @import "~@angular/material/theming";
@@ -11,9 +10,51 @@ $app-primary: mat-palette($mat-blue);
 $app-accent: mat-palette($mat-pink, A200, A100, A400);
 $app-warn: mat-palette($mat-red);
 
+$colors: ();
+$colors: map-merge((
+  "blue": map-get($mat-blue, 500),
+  "indigo": map-get($mat-indigo, 500),
+  "purple": map-get($mat-purple, 500),
+  "pink": map-get($mat-pink, 500),
+  "red": map-get($mat-red, 500),
+  "orange": map-get($mat-orange, 500),
+  "yellow": map-get($mat-yellow, 500),
+  "green": map-get($mat-green, 500),
+  "teal": map-get($mat-teal, 500),
+  "cyan": map-get($mat-cyan, 500),
+  "gray": map-get($mat-gray, 600),
+  "gray-dark": map-get($mat-gray, 800)
+), $colors);
+
 $color-primary: map-get($app-primary, 500);
-$color-success: map-get(mat-palette($mat-green), 500);
-$color-danger: map-get($app-warn, 500);
+$color-success: color("green");
+$color-danger: color("red");
+
+$theme-colors: ();
+$theme-colors: map-merge((
+  "primary": $color-primary,
+  "secondary": map-get($app-accent, 500),
+  "success": $color-success,
+  "info": color("blue"),
+  "warning": color("yellow"),
+  "danger": $color-danger,
+  "light": map-get($mat-gray, 50),
+  "dark": map-get($mat-gray, 900)
+), $theme-colors);
+
+
+// Spacing
+
+$spacer: 14px;
+$spacers: ();
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+), $spacers);
 
 
 // Body
@@ -37,40 +78,50 @@ $gutters: 30px;
 
 // Typography
 
-$font-family-base: 'Roboto, "Helvetica Neue", sans-serif';
+$font-family-sans-serif: 'Roboto, "Helvetica Neue", sans-serif';
+$font-family-base: $font-family-sans-serif;
 
 $font-size-base: 14px;
 $font-size-lg: 18px;
 $font-size-sm: 12px;
 
 $font-weight-light: 300;
-$font-weight-normal: 400;
+$font-weight-base: 400;
 $font-weight-bold: 500;
 $font-weight-bolder: 600;
+$font-weight-normal: $font-weight-base;
 
-$line-height-base: 20px;
-$line-height-large: 24px;
+$line-height-base: 1.42857;
+$line-height-large: 1.71429;
 
 $h1-font-size: 24px;
 $h1-font-weight: 400;
-$h1-line-height: 32px;
+$h1-line-height: 2.28571;
 $h2-font-size: 20px;
 $h2-font-weight: 600;
-$h2-line-height: 32px;
+$h2-line-height: 1.6;
 $h3-font-size: 16px;
 $h3-font-weight: 400;
-$h3-line-height: 28px;
+$h3-line-height: 1.75;
 $h4-font-size: 15px;
 $h4-font-weight: 400;
-$h4-line-height: 24px;
+$h4-line-height: 1.6;
 
 $display1-font-size: 34px;
 $display1-font-weight: 400;
-$display1-line-height: 40px;
+$display1-line-height: 1.17647;
 
 $display2-font-size: 45px;
 $display2-font-weight: 400;
-$display2-line-height: 48px;
+$display2-line-height: 1.06667;
+
+$headings-margin-bottom: $spacer / 2;
+$headings-font-family: null;
+$headings-font-weight: 500;
+$headings-line-height: 1.2;
+$headings-color: null;
+
+$paragraph-margin-bottom: $spacer;
 
 
 // Layout
@@ -88,5 +139,10 @@ $button-font-weight: 500;
 
 // ng-progress
 $progress-bar-height: 3px;
-$progress-bar-color: map-get(mat-palette($mat-red), 600);
+$progress-bar-color: map-get($mat-red, 600);
 
+$hr-margin-y: $spacer;
+$hr-border-width: 1px;
+$hr-border-color: map-get($mat-gray, 400);
+
+$nav-link-padding-y: 0; // fix

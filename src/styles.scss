@@ -3,6 +3,7 @@
 @import "./styles/abstracts/variables";
 
 // Vendors
+@import "./styles/vendor/bootstrap";
 @import "./styles/vendor/angular-material";
 @import "./styles/vendor/material-icons";
 @import "./styles/vendor/progressbar";
@@ -14,7 +15,6 @@
 @import "./styles/base/typography";
 
 // Layout
-@import "./styles/layout/grid";
 @import "./styles/layout/page";
 
 // Components

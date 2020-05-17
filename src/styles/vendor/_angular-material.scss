@@ -29,6 +29,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 
 .mat-drawer-container {
-  background-color: $body-bg;
-  color: $body-color;
+  background-color: transparent;
+  color: inherit;
 }
